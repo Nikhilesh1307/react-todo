@@ -64,7 +64,10 @@ function App() {
   return (
     <div className='main-body d-flex justify-content-center align-items-center'>
       <div className='todolist-main-div'>
-        <h3>My To-Do List</h3>
+        <div>
+           <h3>My To-Do List</h3>
+           <h5>(Prepared using React and BootStrap)</h5>
+        </div>
         <div>
           <div className='todo-task-input-div'>
             <div className="form-floating w-75">
