@@ -7,7 +7,7 @@ function App() {
   const [newTask, setNewTask] = useState("")
   const [myTasks, setMyTasks] = useState(() => {
     const saved = localStorage.getItem('myTasks')
-    return saved ? JSON.parse(saved) : [""]
+    return saved ? JSON.parse(saved) : []
   })
   const [completedTasks, setCompletedTasks] = useState(() => {
     const saved = localStorage.getItem('completedTasks')
