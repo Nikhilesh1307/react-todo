@@ -26,28 +26,50 @@ body {
   max-width: 500px;
   height: auto;
   max-height: 90vh;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
+/* Header section styling */
 .todolist-main-div > div:first-child {
+  background: linear-gradient(135deg, #0082c8 0%, #667db6 100%);
+  color: white;
   text-align: center;
+  padding: 30px 20px;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 82, 200, 0.2);
 }
 
 .todolist-main-div h3 {
-  margin: 0 0 10px 0;
-  color: #333;
+  margin: 0 0 12px 0;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .todolist-main-div h5 {
   margin: 0;
-  color: #666;
-  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  font-style: italic;
+}
+
+/* Main content container */
+.todolist-main-div > div:last-child {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .todo-task-input-div{
@@ -55,7 +77,7 @@ body {
   align-items: center;
   justify-content: center;
   column-gap: 10px;
-  padding: 15px 0;
+  padding: 0 0 15px 0;
   flex-wrap: wrap;
   flex-shrink: 0;
 }
@@ -66,21 +88,70 @@ body {
   min-width: 200px;
 }
 
+.form-floating .form-control {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-floating .form-control:focus {
+  border-color: #0082c8;
+  box-shadow: 0 0 0 3px rgba(0, 82, 200, 0.1);
+}
+
+.form-floating label {
+  color: #666;
+  font-weight: 500;
+}
+
 #add-btn{
   width: 50px;
   height: 50px;
   border-radius: 50%;
   flex-shrink: 0;
+  background: linear-gradient(135deg, #0082c8 0%, #0066a1 100%);
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 82, 200, 0.2);
+}
+
+#add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 82, 200, 0.3);
+}
+
+#add-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 82, 200, 0.2);
 }
 
 /* Section headings */
 .todolist-main-div h6 {
   margin: 15px 0 10px 0;
-  padding: 0 10px;
-  font-weight: 600;
-  color: #333;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 8px;
+  padding: 0;
+  font-weight: 700;
+  color: #0082c8;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #0082c8;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.todolist-main-div h6::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #0082c8;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 /* Task list container with scrolling */
@@ -110,12 +181,12 @@ body {
 }
 
 .tasks-list::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #0082c8;
   border-radius: 10px;
 }
 
 .tasks-list::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #0066a1;
 }
 
 .task-list li {
@@ -127,39 +198,40 @@ body {
   padding: 12px 15px;
   background-color: #f9f9f9;
   border-left: 4px solid #0082c8;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: all 0.3s ease;
   word-break: break-word;
 }
 
 .task:hover {
   background-color: #f0f8ff;
-  box-shadow: 0 2px 4px rgba(0, 82, 200, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 82, 200, 0.15);
+  transform: translateX(4px);
 }
 
 /* Normal/Pending task styling */
 .task.pending {
   border-left: 4px solid #0082c8;
-  background-color: #f9f9f9;
+  background: linear-gradient(to right, rgba(0, 82, 200, 0.05), transparent);
   color: #333;
 }
 
 .task.pending:hover {
-  background-color: #e3f2fd;
-  box-shadow: 0 2px 4px rgba(0, 82, 200, 0.15);
+  background: linear-gradient(to right, rgba(0, 82, 200, 0.12), transparent);
+  box-shadow: 0 2px 8px rgba(0, 82, 200, 0.15);
 }
 
 /* Completed task styling */
 .task.completed {
   border-left: 4px solid #28a745;
-  background-color: #f0f8f3;
+  background: linear-gradient(to right, rgba(40, 167, 69, 0.05), transparent);
   color: #6c757d;
   text-decoration: line-through;
 }
 
 .task.completed:hover {
-  background-color: #e8f5e9;
-  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.15);
+  background: linear-gradient(to right, rgba(40, 167, 69, 0.12), transparent);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
 }
 
 .task-btns {
@@ -169,11 +241,37 @@ body {
   justify-content: flex-end;
 }
 
+.btn-success, .btn-danger {
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
 /* Responsive design for tablet and smaller devices */
 @media (max-width: 768px) {
   .todolist-main-div {
     max-width: 95%;
     max-height: 85vh;
+  }
+
+  .todolist-main-div > div:first-child {
+    padding: 25px 15px;
+  }
+
+  .todolist-main-div h3 {
+    font-size: 1.7rem;
+  }
+
+  .todolist-main-div > div:last-child {
     padding: 15px;
   }
 
@@ -190,6 +288,7 @@ body {
 
   #add-btn {
     width: 100%;
+    border-radius: 8px;
   }
 
   .task-btns {
@@ -206,6 +305,10 @@ body {
   .tasks-list {
     max-height: 250px;
   }
+
+  .todolist-main-div h6 {
+    font-size: 0.95rem;
+  }
 }
 
 /* Responsive design for mobile devices */
@@ -217,26 +320,34 @@ body {
   .todolist-main-div {
     max-width: 100%;
     max-height: 80vh;
-    padding: 12px;
+  }
+
+  .todolist-main-div > div:first-child {
+    padding: 20px 15px;
   }
 
   .todolist-main-div h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
   }
 
   .todolist-main-div h5 {
     font-size: 0.8rem;
   }
 
+  .todolist-main-div > div:last-child {
+    padding: 12px;
+  }
+
   .todolist-main-div h6 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin: 10px 0 8px 0;
     padding: 0;
     padding-bottom: 6px;
   }
 
   .todo-task-input-div {
-    padding: 10px 0;
+    padding: 0 0 10px 0;
     row-gap: 8px;
   }
 
