@@ -5,14 +5,8 @@ import TaskItem2 from './components/TaskItem2'
 
 function App() {
   const [newTask, setNewTask] = useState("")
-  const [myTasks, setMyTasks] = useState(() => {
-    const saved = localStorage.getItem('myTasks')
-    return saved ? JSON.parse(saved) : []
-  })
-  const [completedTasks, setCompletedTasks] = useState(() => {
-    const saved = localStorage.getItem('completedTasks')
-    return saved ? JSON.parse(saved) : []
-  })
+  const [myTasks, setMyTasks] = useState([])
+  const [completedTasks, setCompletedTasks] = useState([])
 
   // Save to localStorage whenever tasks change
   useEffect(() => {
@@ -22,6 +16,17 @@ function App() {
   useEffect(() => {
     localStorage.setItem('completedTasks', JSON.stringify(completedTasks))
   }, [completedTasks])
+
+  // Clear localStorage when the page/tab closes
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.removeItem('myTasks')
+      localStorage.removeItem('completedTasks')
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [])
 
   function handleInput(e) {
     setNewTask(e.target.value);
