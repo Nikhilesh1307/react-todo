@@ -4,7 +4,7 @@ import TaskItem from './components/TaskItem'
 import TaskItem2 from './components/TaskItem2'
 function App() {
   const [newTask,setNewTask]=useState("")
-  const [myTasks,setMyTasks]=useState(["Writing Notes","Shopping","Reading Books","Recording Video","Cooking"])
+  const [myTasks,setMyTasks]=useState([""])
   const [completedTasks,setCompletedTasks] = useState([])
   function handleInput(e){
     setNewTask(e.target.value);
